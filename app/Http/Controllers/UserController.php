@@ -9,12 +9,12 @@ class UserController extends Controller
     //Listar
     public function index()
     {
-        dd('Carregar usuarios');
+        return view('users.index');
     }
      //Cadastrar 
     public function create()
     {
-        dd('Formulario Cadastrar usuarios');
+        return view('users.create');
     }
      //Listar
     public function store()
@@ -24,12 +24,12 @@ class UserController extends Controller
      //Visualizar
     public function show()
     {
-        dd('Exibe usuarios');
+        return view('users.show');
     }
      //Form editar
     public function edit()
     {
-        dd('Editar usuarios');
+        return view('users.edit');
     }
      //Atualizar
     public function update()
