@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Exception;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -19,9 +23,21 @@ class UserController extends Controller
         return view('users.create');
     }
      //Listar
-    public function store()
+    public function store(Request $request)
     {
-        dd('Cadastrar usuarios');
+        try{
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+
+            return redirect()->route('users.index')->with('success', 'Usuário cadastrado com sucesso!');
+        
+            }catch(Exception $e){
+                Log::notice('Erro ao cadastrar usuário: ' . $e->getMessage());
+                return back()->withInput()->with('error', 'Erro ao cadastrar usuário!');
+        }
     }
      //Visualizar
     public function show(User $user)

@@ -28,7 +28,7 @@ class MachineController extends Controller
     {
         try{
             Machine::create([
-                'nam' => $request->name,
+                'name' => $request->name,
                 'is_active' => $request->is_active
             ]);
 

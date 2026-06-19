@@ -10,15 +10,15 @@
             {{ session('error') }}
         </div>
      @endif
-     
+
     <form action="{{ route('machines.store') }}" method="POST">
         @csrf
         <label for="name">Nome:</label><br>
         <input type="text" id="name" name="name"><br><br>
         <label for="is_active">Ativo:</label><br>
         <select name="is_active" id="is_active">
-            <option value="1">Sim</option>
-            <option value="0">Não</option>
+            <option value="1" {{ old('is_active') == 1 ? 'selected' : '' }}>Sim</option>
+            <option value="0" {{ old('is_active') == 0 ? 'selected' : '' }}>Não</option>
         </select><br><br>
         <input type="submit" value="Cadastrar">
 </div>
