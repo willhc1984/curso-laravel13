@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
     //Listar
     public function index()
     {
-        return view('users.index');
+        $users = User::orderBy('id', 'desc')->get();
+        return view('users.index', ['users' => $users]);
     }
      //Cadastrar 
     public function create()
@@ -22,9 +24,9 @@ class UserController extends Controller
         dd('Cadastrar usuarios');
     }
      //Visualizar
-    public function show()
+    public function show(User $user)
     {
-        return view('users.show');
+        return view('users.show', ['user' => $user]);
     }
      //Form editar
     public function edit()

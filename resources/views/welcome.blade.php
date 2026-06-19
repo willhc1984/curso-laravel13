@@ -23,7 +23,9 @@
         </header>
 
         <h3>Bem vindo!</h3>
-        
+        <a href="{{ route('users.index')}}">Usuários</a>
+        <a href="{{ route('machines.index')}}">Máquinas</a>
+
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
