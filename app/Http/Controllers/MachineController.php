@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Machine;
 
 class MachineController extends Controller
 {
     //Listar
     public function index()
     {
-        return view('machines.index');
+        //recuperar registros do banco de dados
+        $machines = Machine::orderBy('id', 'desc')->get();
+        return view('machines.index', ['machines' => $machines]);
     }
      //Cadastrar 
     public function create()
@@ -22,9 +25,9 @@ class MachineController extends Controller
         dd('Cadastrar maquinas');
     }
      //Visualizar
-    public function show()
+    public function show(Machine $machine)
     {
-        return view('machines.show');
+        return view('machines.show', ['machine' => $machine]);
     }
      //Form editar
     public function edit()
