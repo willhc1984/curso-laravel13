@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Machine;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class MachineController extends Controller
 {
@@ -24,12 +26,18 @@ class MachineController extends Controller
      //Listar
     public function store(Request $request)
     {
-        Machine::create([
-            'name' => $request->name,
-            'is_active' => $request->is_active
-        ]);
+        try{
+            Machine::create([
+                'nam' => $request->name,
+                'is_active' => $request->is_active
+            ]);
 
-        return redirect()->route('machines.index')->with('success', 'Maquina cadastrada com sucesso!');
+            return redirect()->route('machines.index')->with('success', 'Maquina cadastrada com sucesso!');
+        
+            }catch(Exception $e){
+                Log::notice('Erro ao cadastrar maquina: ' . $e->getMessage());
+                return back()->withInput()->with('error', 'Erro ao cadastrar maquina!');
+        }
     }
 
      //Visualizar

@@ -4,6 +4,13 @@
 <div>
     <!-- Smile, breathe, and go slowly. - Thich Nhat Hanh -->
     <h1>Cadastrar Máquina</h1>
+
+    @if(session('error'))
+        <div style="color: red;">
+            {{ session('error') }}
+        </div>
+     @endif
+     
     <form action="{{ route('machines.store') }}" method="POST">
         @csrf
         <label for="name">Nome:</label><br>
