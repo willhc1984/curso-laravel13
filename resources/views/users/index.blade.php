@@ -1,3 +1,7 @@
+
+@extends('layouts.admin')
+
+@section('content')
 <div>
     <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
     <h1>Listar Usuários</h1>
@@ -8,3 +12,4 @@
         <p>Não há usuários cadastrados.</p>
     @endforelse
 </div>
+@endsection

@@ -1,8 +1,9 @@
+@extends('layouts.admin')
+
+@section('content')
+
 <div>
-    <!-- The only way to do great work is to love what you do. - Steve Jobs
-     -->
-    <a href="{{ route('users.index')}}">Usuários</a>
-    <a href="{{ route('machines.index')}}">Máquinas</a><hr>
+     <a href="{{ route('machines.create')}}">Cadastrar Máquinas</a><hr>
      <h1>Listar Máquinas</h1>
      {{-- {{ dd($machines) }} --}}
 
@@ -15,3 +16,5 @@
          
      @endforelse
 </div>
+
+@endsection

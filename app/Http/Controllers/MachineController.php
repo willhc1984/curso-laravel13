@@ -14,16 +14,24 @@ class MachineController extends Controller
         $machines = Machine::orderBy('id', 'desc')->get();
         return view('machines.index', ['machines' => $machines]);
     }
+
      //Cadastrar 
     public function create()
     {
         return view('machines.create');
     }
+
      //Listar
-    public function store()
+    public function store(Request $request)
     {
-        dd('Cadastrar maquinas');
+        Machine::create([
+            'name' => $request->name,
+            'is_active' => $request->is_active
+        ]);
+
+        return redirect()->route('machines.index')->with('success', 'Maquina cadastrada com sucesso!');
     }
+
      //Visualizar
     public function show(Machine $machine)
     {

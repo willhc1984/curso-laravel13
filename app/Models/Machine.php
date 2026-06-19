@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Attributes\Table;
 #[Table('machines')]
 
 //Indicar colunas que podem ser preenchidas
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name', 'is_active'])]
 
 class Machine extends Model
 {
