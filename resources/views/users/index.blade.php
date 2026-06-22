@@ -20,5 +20,7 @@
     @empty
         <p>Não há usuários cadastrados.</p>
     @endforelse
+
+    {{ $users->links() }}
 </div>
 @endsection

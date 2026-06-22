@@ -15,7 +15,7 @@ class UserController extends Controller
     //Listar
     public function index()
     {
-        $users = User::orderBy('id', 'desc')->get();
+        $users = User::orderBy('id', 'desc')->paginate(4);
         return view('users.index', ['users' => $users]);
     }
      //Cadastrar 

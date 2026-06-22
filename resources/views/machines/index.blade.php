@@ -19,8 +19,10 @@
             @method('DELETE')
             <button type="submit">Excluir</button><br><hr>
      @empty
-         
+        <p>Não há máquinas cadastradas.</p>
      @endforelse
+
+     {{ $machines->links() }}
 </div>
 
 @endsection

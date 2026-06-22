@@ -13,7 +13,7 @@ class MachineController extends Controller
     public function index()
     {
         //recuperar registros do banco de dados
-        $machines = Machine::orderBy('id', 'desc')->get();
+        $machines = Machine::orderBy('id', 'desc')->paginate(4);
         return view('machines.index', ['machines' => $machines]);
     }
 
