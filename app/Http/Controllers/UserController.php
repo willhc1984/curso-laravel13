@@ -39,15 +39,17 @@ class UserController extends Controller
                 return back()->withInput()->with('error', 'Erro ao cadastrar usuário!');
         }
     }
+
      //Visualizar
     public function show(User $user)
     {
         return view('users.show', ['user' => $user]);
     }
+
      //Form editar
-    public function edit()
+    public function edit(User $user)
     {
-        return view('users.edit');
+        return view('users.edit', ['user' => $user]);
     }
      //Atualizar
     public function update()

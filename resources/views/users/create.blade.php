@@ -5,11 +5,7 @@
     <!-- Live as if you were to die tomorrow. Learn as if you were to live forever. - Mahatma Gandhi -->
     <h1> Cadastrar Usuário </h1>
 
-    @if(session('error'))
-        <div style="color: red;">
-            {{ session('error') }}
-        </div>
-    @endif
+    <x-alert />
 
     <form action="{{ route('users.store') }}" method="POST">
         @csrf

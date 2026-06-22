@@ -7,11 +7,7 @@
     <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
     <h1>Listar Usuários</h1>
 
-    @if(session('success'))
-        <div style="color: green;">
-            {{ session('success') }}
-        </div>
-    @endif
+    <x-alert />
 
     @forelse ($users as $user)
         Nome: <a href="{{ route('users.show', $user->id) }}"> {{ $user->name }} </a><br>

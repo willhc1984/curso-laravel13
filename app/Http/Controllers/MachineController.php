@@ -46,14 +46,25 @@ class MachineController extends Controller
         return view('machines.show', ['machine' => $machine]);
     }
      //Form editar
-    public function edit()
+    public function edit(Machine $machine)
     {
-        return view('machines.edit');
+        return view('machines.edit', ['machine' => $machine]);
     }
      //Atualizar
-    public function update()
+    public function update(Request $request, Machine $machine)
     {
-        dd('Atualizar maquinas');
+        try{
+            $machine->update([
+                'name' => $request->name,
+                'is_active' => $request->is_active
+            ]);
+
+            return redirect()->route('machines.index')->with('success', 'Maquina atualizada com sucesso!');
+        
+            }catch(Exception $e){
+                Log::notice('Erro ao atualizar maquina: ' . $e->getMessage());
+                return back()->withInput()->with('error', 'Erro ao atualizar maquina!');
+        }
     }
 
      //Excluir
