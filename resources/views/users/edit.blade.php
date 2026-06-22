@@ -16,6 +16,8 @@
         <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"><br><br>
         <label for="password">Senha:</label><br>
         <input type="password" id="password" name="password"><br><br>
+        <label for="password">Confirmar Senha:</label><br>
+        <input type="password" name="password_confirmation"><br><br>
         
         <input type="submit" value="Salvar">
 </div>

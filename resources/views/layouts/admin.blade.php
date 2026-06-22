@@ -9,8 +9,9 @@
     </head>
     <body>
         <a href="{{ route('users.index')}}">Usuários</a>
-        <a href="{{ route('machines.index')}}">Máquinas</a>
-
+        <a href="{{ route('machines.index')}}">Máquinas</a><hr>
+        <a href="{{ route('users.create') }}">Cadastrar usuário</a><br>
+        <a href="{{ route('machines.create') }}">Cadastrar maquina</a>
         @yield('content')
 
     </body>

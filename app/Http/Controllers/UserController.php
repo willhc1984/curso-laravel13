@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -22,9 +23,11 @@ class UserController extends Controller
     {
         return view('users.create');
     }
-     //Listar
-    public function store(Request $request)
+
+    //Cadastrar no  banco de dados
+    public function store(UserRequest $request)
     {
+        
         try{
             User::create([
                 'name' => $request->name,
@@ -53,7 +56,7 @@ class UserController extends Controller
     }
 
     //Atualizar
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         try{
             $user->update([

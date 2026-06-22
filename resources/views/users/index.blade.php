@@ -3,7 +3,6 @@
 
 @section('content')
 <div>
-    <a href="{{ route('users.create') }}">Cadastrar usuário</a>
     <!-- No surplus words or unnecessary actions. - Marcus Aurelius -->
     <h1>Listar Usuários</h1>
 
