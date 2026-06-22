@@ -51,15 +51,34 @@ class UserController extends Controller
     {
         return view('users.edit', ['user' => $user]);
     }
-     //Atualizar
-    public function update()
+
+    //Atualizar
+    public function update(Request $request, User $user)
     {
-        dd('Atualizar usuarios');
+        try{
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+
+            return redirect()->route('users.index')->with('success', 'Usuário atualizado com sucesso!');
+        
+            }catch(Exception $e){
+                Log::notice('Erro ao atualizar usuário: ' . $e->getMessage());
+                return back()->withInput()->with('error', 'Erro ao atualizar usuário!');
+        }
     }
 
      //Excluir
-    public function delete()
+    public function destroy(User $user)
     {
-        dd('Excluir usuarios');
+        try{
+            $user->delete();
+            return redirect()->route('users.index')->with('success', 'Usuário excluído com sucesso!');
+        }catch(Exception $e){
+            Log::notice('Erro ao excluir usuário: ' . $e->getMessage());
+            return back()->withInput()->with('error', 'Erro ao excluir usuário!');
+        }
     }
 }

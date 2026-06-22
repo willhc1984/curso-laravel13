@@ -68,8 +68,14 @@ class MachineController extends Controller
     }
 
      //Excluir
-    public function delete()
+    public function destroy(Machine $machine)
     {
-        dd('Excluir maquinas');
+        try{
+            $machine->delete();
+                return redirect()->route('machines.index')->with('success', 'Maquina excluída com sucesso!');
+            }catch(Exception $e){
+                Log::notice('Erro ao excluir maquina: ' . $e->getMessage());
+                return back()->withInput()->with('error', 'Erro ao excluir maquina!');
+        }
     }
 }

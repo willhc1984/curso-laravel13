@@ -11,7 +11,13 @@
 
     @forelse ($users as $user)
         Nome: <a href="{{ route('users.show', $user->id) }}"> {{ $user->name }} </a><br>
-        E-mail: {{ $user->email }} <hr><br>
+        E-mail: {{ $user->email }} <br>
+        <a href="{{ route('users.edit', $user->id) }}">Editar</a><br>
+        <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Excluir</button><br><br><hr>
+        </form>
     @empty
         <p>Não há usuários cadastrados.</p>
     @endforelse
