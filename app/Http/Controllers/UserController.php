@@ -15,6 +15,8 @@ class UserController extends Controller
     //Listar
     public function index()
     {
+        //Salvar log
+        Log::info('Acessou a página de listagem de usuários');
         $users = User::orderBy('id', 'desc')->paginate(4);
         return view('users.index', ['users' => $users]);
     }
@@ -27,7 +29,6 @@ class UserController extends Controller
     //Cadastrar no  banco de dados
     public function store(UserRequest $request)
     {
-        
         try{
             User::create([
                 'name' => $request->name,
@@ -35,6 +36,7 @@ class UserController extends Controller
                 'password' => bcrypt($request->password)
             ]);
 
+            Log::info('Usuário cadastrado: ' . $request->email);
             return redirect()->route('users.index')->with('success', 'Usuário cadastrado com sucesso!');
         
             }catch(Exception $e){
